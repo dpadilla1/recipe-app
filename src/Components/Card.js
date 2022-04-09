@@ -8,7 +8,7 @@ const MealCard = ({
 }) => (
     <div>
         <Card style={{ width: '15rem' }}>
-            <Card.Img variant="top" src="https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg" />
+            <Card.Img variant="top" src={mealCard.img} />
             <Card.Body>
                 <Card.Title>{mealCard.Name}</Card.Title>
                 <Card.Text>
@@ -18,8 +18,8 @@ const MealCard = ({
                     variant="primary"
                     onClick={(e) => {
                         e.preventDefault();
-                        window.location.href=mealCard.DocsLink;
-                        }}>Docs Bookmark</Button>
+                        window.location.href=mealCard.SlidesLink;
+                        }}>Slide</Button>
             </Card.Body>
         </Card>
   </div>

@@ -19,12 +19,16 @@ class MainPage extends React.Component {
                 "ID" : "1",
                 "Name" : "Derek",
                 "Tags" : "fat, ugly, poor",
-                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo"
+                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo",
+                "SlidesLink" : "https://docs.google.com/presentation/d/164i3T-6spWOXdTOHDoGYBDr6konxn_pgPv3n81WOVCo/edit#slide=id.g123c42ac328_0_45",
+                "img" : "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/wmzltkrx/71623eb0-5357-4fc4-8759-167961cf0dbf.jpg"
             }, {
                 "ID" : "2",
                 "Name" : "Gavin",
                 "Tags" : "buff, sexy, rich",
-                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr"
+                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
+                "SlidesLink" : "https://docs.google.com/presentation/d/164i3T-6spWOXdTOHDoGYBDr6konxn_pgPv3n81WOVCo/edit#slide=id.g123c42ac328_0_174",
+                "img" : "https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg"
             }],
             results2: null,
             dataPoints1: [{tType: 'loading'}],
