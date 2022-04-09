@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container'
 
 export default class Logo extends Component {
 
@@ -7,8 +8,12 @@ export default class Logo extends Component {
     return (
       <nav className="navbar navbar-dark navbar-expand-lg"
             style={{"backgroundColor": "#cf84c5"}}>
-        <div className="collpase navbar-collapse">
-            <Link to="/" className="navbar-brand mx-auto"><b>Recipe App</b></Link>
+        <div className="collpase navbar-collapse justify-content-center">
+            <ul className="navbar-nav mx-auto">
+              <li className="nav-item mx-auto">
+                <Link to="/" className="navbar-brand"><b>Recipe App</b></Link>
+              </li>
+            </ul>
         </div>
       </nav>
     );

@@ -7,6 +7,7 @@ import axios from 'axios';
 //var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 import Search from "./Components/Search";
+import CardList from "./Components/CardList";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -14,7 +15,14 @@ class MainPage extends React.Component {
         this.state = {
             filterText: '',
             favorites: [],
-            results: null,
+            results: [{
+                "ID" : "1",
+                "Name" : "Derek"
+            }, {
+                "ID" : "2",
+                "Name" : "Gavin"
+            }],
+            results2: null,
             dataPoints1: [{tType: 'loading'}],
             dataPoints2: [{tType: 'loading'}],
             dataPoints3: [{tType: 'loading'}]
@@ -30,7 +38,7 @@ class MainPage extends React.Component {
         axios.get(url2)
             .then(response => {
                 this.setState({
-                    results: response.data
+                    results2: response.data
                 }, () => {
                     console.log("API RESULTS: ", response.data.fact);
                 })
@@ -52,9 +60,9 @@ class MainPage extends React.Component {
                     console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
                 })*/
 
-        var chart = this.chart;
+        //var chart = this.chart;
         let url = 'http://localhost:5000/api/trendquery3';
-        axios.get(url)
+        /*axios.get(url)
             .then(res => {
                 this.setState({
                     results: res.data
@@ -96,7 +104,7 @@ class MainPage extends React.Component {
             })
             .catch(error => {
                 console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
-            })
+            })*/
     }
 
     // update filterText in state when user types 
@@ -129,7 +137,7 @@ class MainPage extends React.Component {
     render() {
         const hasSearch = this.state.filterText.length > 0;
         //Table Entries
-        var results = null;
+        var results2 = null;
         /*if(this.state.results != null) {
             if(this.state.results.length > 0) {
                 results = this.state.results.map((r,i) => {
@@ -142,9 +150,9 @@ class MainPage extends React.Component {
                 })
             }
         }*/
-        console.log("RESULTS: " + this.state.results)
-        if(this.state.results != null){
-            results = this.state.results.fact
+        console.log("RESULTS: " + this.state.results2)
+        if(this.state.results2 != null){
+            results2 = this.state.results2.fact
         }
         
         
@@ -158,11 +166,33 @@ class MainPage extends React.Component {
                         <Search
                             filterVal={this.state.filterText}
                             filterUpdate={this.filterUpdate.bind(this)}
-                        /> 
+                        /> <br/>
+                        {/* 
+                            Show only if user has typed in search.
+                            To reset the input field, we pass an 
+                            empty value to the filterUpdate method
+                        */}
+                        {hasSearch &&
+                            <button
+                            className='text-center'
+                            onClick={this.filterUpdate.bind(this, '')}>
+                            Clear Search
+                            </button>
+                        }
                     </header>
                     <br/>
+                    
                     {/*<h5 className="text-center">Trend Query 3</h5><br/>*/}
-                    <br/><br/><br/><br/><br/>
+                    <br/><br/>
+                    <main>
+                        <CardList 
+                            data={this.state.results}
+                            filter={this.state.filterText}
+                        />
+                    </main>
+
+
+                    <br/><br/><br/>
 
                     {/*<h4 className="text-center">Teams</h4> */ }
                     <div className="timesheet-table">
@@ -176,7 +206,9 @@ class MainPage extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {results}
+                                <tr>
+                                   <td>{results2}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

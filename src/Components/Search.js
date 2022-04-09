@@ -12,6 +12,7 @@ class Search extends Component {
     return (
       <form>
         <input 
+          style={{'width':'100%'}}
           type='text'
           ref='filterInput'
           placeholder='Type to filter..'
