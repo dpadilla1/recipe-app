@@ -6,10 +6,14 @@ import axios from 'axios';
 //var CanvasJS = CanvasJSReact.CanvasJS;
 //var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+import Search from "./Components/Search";
+
 class MainPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            filterText: '',
+            favorites: [],
             results: null,
             dataPoints1: [{tType: 'loading'}],
             dataPoints2: [{tType: 'loading'}],
@@ -95,7 +99,35 @@ class MainPage extends React.Component {
             })
     }
 
+    // update filterText in state when user types 
+    filterUpdate(value) {
+        this.setState({
+        filterText: value
+        });
+    }
+
+    // add clicked name ID to the favourites array
+    addFavorite(id) {
+        const newSet = this.state.favorites.concat([id])
+        this.setState({
+            favorites: newSet
+        });
+    }
+
+    // remove ID from the favourites array
+    deleteFavorite(id) {
+        const { favorites } = this.state
+        const newList = [
+        ...favorites.slice(0, id),
+        ...favorites.slice(id + 1)
+        ]
+        this.setState({
+            favorites: newList
+        })
+    }
+
     render() {
+        const hasSearch = this.state.filterText.length > 0;
         //Table Entries
         var results = null;
         /*if(this.state.results != null) {
@@ -121,18 +153,26 @@ class MainPage extends React.Component {
 
             <div>
                 <div className="container">
-                    <h5 className="text-center">Trend Query 3</h5><br/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/>
+                    <header className='text-center'>
+                        <Search
+                            filterVal={this.state.filterText}
+                            filterUpdate={this.filterUpdate.bind(this)}
+                        /> 
+                    </header>
+                    <br/>
+                    {/*<h5 className="text-center">Trend Query 3</h5><br/>*/}
+                    <br/><br/><br/><br/><br/>
 
                     {/*<h4 className="text-center">Teams</h4> */ }
                     <div className="timesheet-table">
-                        <h5 className="text-center">Displaying results for Trend Query 3</h5>
+                        <h5 className="text-center">Displaying results for Cat Facts API</h5>
                     
                         <table className="table table-bordered">
                             <thead className="thead-dark">
                                 <tr>
+                                    <th>Fact</th>
                                     <th>-</th>
-                                    <th>Month</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -6,7 +6,7 @@ export default class Logo extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark navbar-expand-lg"
-            style={{"backgroundColor": "#183163"}}>
+            style={{"backgroundColor": "#cf84c5"}}>
         <div className="collpase navbar-collapse">
             <Link to="/" className="navbar-brand mx-auto"><b>Recipe App</b></Link>
         </div>
