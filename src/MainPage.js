@@ -18,11 +18,13 @@ class MainPage extends React.Component {
             results: [{
                 "ID" : "1",
                 "Name" : "Derek",
-                "Tags" : "fat, ugly, poor"
+                "Tags" : "fat, ugly, poor",
+                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo"
             }, {
                 "ID" : "2",
                 "Name" : "Gavin",
-                "Tags" : "buff, sexy, rich"
+                "Tags" : "buff, sexy, rich",
+                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr"
             }],
             results2: null,
             dataPoints1: [{tType: 'loading'}],
