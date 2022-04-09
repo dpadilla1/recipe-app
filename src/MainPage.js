@@ -17,10 +17,12 @@ class MainPage extends React.Component {
             favorites: [],
             results: [{
                 "ID" : "1",
-                "Name" : "Derek"
+                "Name" : "Derek",
+                "Tags" : "fat, ugly, poor"
             }, {
                 "ID" : "2",
-                "Name" : "Gavin"
+                "Name" : "Gavin",
+                "Tags" : "buff, sexy, rich"
             }],
             results2: null,
             dataPoints1: [{tType: 'loading'}],
