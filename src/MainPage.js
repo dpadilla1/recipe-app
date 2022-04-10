@@ -202,6 +202,8 @@ class MainPage extends React.Component {
 
                     <br/><br/><br/>
 
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQeDd-DlowUw-OjN2YEpLpULv1xBvFlyDbP7BazKA0jHl8OartFdacITRsBYa9pEPbogDa3cRltt64X/embed?start=false&loop=false&delayms=3000&slide=id.g123c42ac328_0_45" frameborder="0" width="569" height="900" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
                     {/*<h4 className="text-center">Teams</h4> */ }
                     <div className="timesheet-table">
                         <h5 className="text-center">Displaying results for Cat Facts API</h5>

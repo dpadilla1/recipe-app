@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const MealCard = ({ 
   id, 
@@ -14,12 +15,13 @@ const MealCard = ({
                 <Card.Text>
                     Description Text
                 </Card.Text>
-                <Button 
-                    variant="primary"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        window.location.href=mealCard.SlidesLink;
-                        }}>Slide</Button>
+                <Link to="/slide" >
+                    <Button 
+                        variant="primary"
+                    >
+                        Slide
+                    </Button>
+                </Link>
             </Card.Body>
         </Card>
   </div>
