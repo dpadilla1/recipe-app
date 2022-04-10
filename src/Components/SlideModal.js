@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
 
-const SlideModal = (mealInfo) => {
-  mealInfo = mealInfo.mealInfo;
+const SlideModal = (
+  values
+) => {
+  console.log(values);
+  var mealInfo = values.mealCard;
   var src = "https://docs.google.com/presentation/d/e/2PACX-1vQeDd-DlowUw-OjN2YEpLpULv1xBvFlyDbP7BazKA0jHl8OartFdacITRsBYa9pEPbogDa3cRltt64X/embed?start=false&loop=false&delayms=3000&";
   src += mealInfo.SlidesLink;
   console.log("src: "+ src);
@@ -17,10 +21,15 @@ const SlideModal = (mealInfo) => {
   }
 
   return (
-    <div>
-      <Button variant="outline-primary" size="sm" onClick={handleShow} style={{fontSize:"8px"}}>
-        More Info
-      </Button>
+    <div className='floatCard' style={{ float: 'left' }}>
+      <Card style={{ width: '140px' }} >
+            <Card.Img variant="top" src={mealInfo.img} onClick={() => handleShow()}/>
+            <Card.Body>
+                <Card.Title style={{fontSize:"14px"}}>
+                    {mealInfo.Name}
+                </Card.Title>
+            </Card.Body>
+        </Card>
 
       <Modal show={show} fullscreen={fullscreen} onHide={handleClose}>
         <Modal.Header closeButton>

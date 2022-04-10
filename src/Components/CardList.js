@@ -1,7 +1,8 @@
 import React from 'react'
 import { CardGroup } from 'react-bootstrap'
 
-import MealCard from './Card'
+//import MealCard from './Card'
+import SlideModal from './SlideModal'
 
 
 var CardList = ({ 
@@ -42,7 +43,7 @@ var CardList = ({
       .map((card, i) => {
       // only display cards that match current input string
         return (
-          <MealCard 
+          <SlideModal 
             id={card.ID}
             key={i}
             mealCard={card}

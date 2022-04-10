@@ -120,7 +120,7 @@ class MainPage extends React.Component {
                             </button>
                         }
                     </header>
-                    <br/><br/>
+                    <br/><br/><br/><br/>
                     <main>
                         <CardList 
                             data={this.state.results}
