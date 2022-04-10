@@ -20,14 +20,14 @@ class MainPage extends React.Component {
                 "Name" : "Derek",
                 "Tags" : "fat, ugly, poor",
                 "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo",
-                "SlidesLink" : "https://docs.google.com/presentation/d/164i3T-6spWOXdTOHDoGYBDr6konxn_pgPv3n81WOVCo/edit#slide=id.g123c42ac328_0_45",
+                "SlidesLink" : "slide=id.g123c42ac328_0_45",
                 "img" : "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/wmzltkrx/71623eb0-5357-4fc4-8759-167961cf0dbf.jpg"
             }, {
                 "ID" : "2",
                 "Name" : "Gavin",
                 "Tags" : "buff, sexy, rich",
                 "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
-                "SlidesLink" : "https://docs.google.com/presentation/d/164i3T-6spWOXdTOHDoGYBDr6konxn_pgPv3n81WOVCo/edit#slide=id.g123c42ac328_0_174",
+                "SlidesLink" : "slide=id.g123c42ac328_0_174",
                 "img" : "https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg"
             }],
             results2: null,
@@ -48,7 +48,7 @@ class MainPage extends React.Component {
                 this.setState({
                     results2: response.data
                 }, () => {
-                    console.log("API RESULTS: ", response.data.fact);
+                    console.log("CAT: ", response.data.fact);
                 })
             })
             .catch(error => {
@@ -56,12 +56,12 @@ class MainPage extends React.Component {
             })
 
         //let url3 = 'https://sheet.best/api/sheets/dce16b23-ba7f-4705-a5fe-1c922f431c17';
-        /* axios.get(url2)
+        /*axios.get(url3)
             .then(response => {
                     this.setState({
                         results: response.data
                     }, () => {
-                        console.log("API RESULTS: ", response.data.fact);
+                        console.log("SHEETS: ", response.data);
                     })
                 })
                 .catch(error => {
@@ -69,7 +69,7 @@ class MainPage extends React.Component {
                 })*/
 
         //var chart = this.chart;
-        let url = 'http://localhost:5000/api/trendquery3';
+        //let url = 'http://localhost:5000/api/trendquery3';
         /*axios.get(url)
             .then(res => {
                 this.setState({
@@ -201,8 +201,6 @@ class MainPage extends React.Component {
 
 
                     <br/><br/><br/>
-
-                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQeDd-DlowUw-OjN2YEpLpULv1xBvFlyDbP7BazKA0jHl8OartFdacITRsBYa9pEPbogDa3cRltt64X/embed?start=false&loop=false&delayms=3000&slide=id.g123c42ac328_0_45" frameborder="0" width="569" height="900" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
                     {/*<h4 className="text-center">Teams</h4> */ }
                     <div className="timesheet-table">

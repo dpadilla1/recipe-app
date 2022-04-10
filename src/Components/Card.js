@@ -15,7 +15,12 @@ const MealCard = ({
                 <Card.Text>
                     Description Text
                 </Card.Text>
-                <Link to="/slide" >
+                <Link to={{
+                    pathname: "/slide",
+                    hash: "1111",
+                }} 
+                    state={mealCard}
+                >
                     <Button 
                         variant="primary"
                     >

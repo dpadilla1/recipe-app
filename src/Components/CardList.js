@@ -12,7 +12,6 @@ var CardList = ({
   if (data != null){
     var input = filter.toLowerCase();
     var inputArr = input.split(', ');
-    console.log("Number of inputs: " + inputArr.length)
   
     // Gather list of cards
     cards = data
@@ -23,7 +22,6 @@ var CardList = ({
           return true;
         }
         if (inputArr.length === 1) {
-          console.log("INCLUDE THIS? : [" + card.Name.toLowerCase() + "] return : [" + !card.Name.toLowerCase().indexOf(input))
           return (
             // ...are not matching the current search value
             !card.Name.toLowerCase().indexOf(input) || tagArr.includes(input)
@@ -33,7 +31,6 @@ var CardList = ({
           let tagArr = card.Tags.toLowerCase().split(', ');
           tagArr.forEach(t => console.log(t))
           for (let i = 0; i < inputArr.length; i++) {
-            console.log("i: " + i + " input value: " + inputArr[i]);
             if (!tagArr.includes(inputArr[i]) && card.Name.toLowerCase().indexOf(inputArr[i])) {
               return false;
             }
