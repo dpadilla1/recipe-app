@@ -1,5 +1,5 @@
 import React from 'react'
-import CardGroup from 'react-bootstrap/CardGroup'
+import { CardGroup } from 'react-bootstrap'
 
 import MealCard from './Card'
 
@@ -37,7 +37,6 @@ var CardList = ({
           }
           return true;
         }
-        return true;
       })
       // ...output a <Card /> component for each Card
       .map((card, i) => {
@@ -57,7 +56,7 @@ var CardList = ({
   return ( 
     <div className='container'>
       <CardGroup>
-       {cards}
+        {cards}
       </CardGroup>
     </div>
   )

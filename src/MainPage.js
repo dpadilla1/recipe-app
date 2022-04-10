@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-//import '../stylesheets/TestQuery1.css';
-//import Navbar from "../components/navbar.component";
-//import CanvasJSReact from '../CanvasJS/canvasjs.react';
-//var CanvasJS = CanvasJSReact.CanvasJS;
-//var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { Container, Row } from 'react-bootstrap';
 
 import Search from "./Components/Search";
 import CardList from "./Components/CardList";
@@ -17,23 +13,20 @@ class MainPage extends React.Component {
             favorites: [],
             results: [{
                 "ID" : "1",
-                "Name" : "Derek",
+                "Name" : "Derek Pizza",
                 "Tags" : "fat, ugly, poor",
                 "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo",
                 "SlidesLink" : "slide=id.g123c42ac328_0_45",
                 "img" : "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/wmzltkrx/71623eb0-5357-4fc4-8759-167961cf0dbf.jpg"
             }, {
                 "ID" : "2",
-                "Name" : "Gavin",
+                "Name" : "Gavin Pizza",
                 "Tags" : "buff, sexy, rich",
                 "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
                 "SlidesLink" : "slide=id.g123c42ac328_0_174",
                 "img" : "https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg"
             }],
-            results2: null,
-            dataPoints1: [{tType: 'loading'}],
-            dataPoints2: [{tType: 'loading'}],
-            dataPoints3: [{tType: 'loading'}]
+            results2: null
         }
     }
 
@@ -54,65 +47,6 @@ class MainPage extends React.Component {
             .catch(error => {
                 console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
             })
-
-        //let url3 = 'https://sheet.best/api/sheets/dce16b23-ba7f-4705-a5fe-1c922f431c17';
-        /*axios.get(url3)
-            .then(response => {
-                    this.setState({
-                        results: response.data
-                    }, () => {
-                        console.log("SHEETS: ", response.data);
-                    })
-                })
-                .catch(error => {
-                    console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
-                })*/
-
-        //var chart = this.chart;
-        //let url = 'http://localhost:5000/api/trendquery3';
-        /*axios.get(url)
-            .then(res => {
-                this.setState({
-                    results: res.data
-                }, () => {
-                    //display data for testing
-                    console.log("MY RESULTS: ", res);
-                    //insert data into datapoints for chart
-                    let a = [];
-                    let b = [];
-                    let c = [];
-                    for(var i=0; i< (res.data.length / 3); i++) {
-                        a.push({
-                            y: res.data[i].C,
-                            label: res.data[i].MONTH,
-                            tType: res.data[i].TURNOVERTYPE
-                        })
-                    }
-                    for(var j= (res.data.length / 3); j< (res.data.length / 3 * 2); j++) {
-                        b.push({
-                            y: res.data[j].C,
-                            label: res.data[j].MONTH,
-                            tType: res.data[j].TURNOVERTYPE
-                        })
-                    }
-                    for(var k= (res.data.length / 3 * 2); k< res.data.length; k++) {
-                        c.push({
-                            y: res.data[k].C,
-                            label: res.data[k].MONTH,
-                            tType: res.data[k].TURNOVERTYPE
-                        })
-                    }
-                    this.setState({
-                        dataPoints1: a,
-                        dataPoints2: b,
-                        dataPoints3: c
-                    });
-                    chart.render();
-                })
-            })
-            .catch(error => {
-                console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
-            })*/
     }
 
     // update filterText in state when user types 
@@ -163,12 +97,10 @@ class MainPage extends React.Component {
             results2 = this.state.results2.fact
         }
         
-        
-
         return (
-
-            <div>
-                <div className="container">
+            <Container>
+                <br/>
+                <Row>
                     <br/>
                     <header className='text-center'>
                         <Search
@@ -188,9 +120,6 @@ class MainPage extends React.Component {
                             </button>
                         }
                     </header>
-                    <br/>
-                    
-                    {/*<h5 className="text-center">Trend Query 3</h5><br/>*/}
                     <br/><br/>
                     <main>
                         <CardList 
@@ -198,30 +127,29 @@ class MainPage extends React.Component {
                             filter={this.state.filterText}
                         />
                     </main>
+                </Row>
 
 
-                    <br/><br/><br/>
+                <br/><br/><br/>
 
-                    {/*<h4 className="text-center">Teams</h4> */ }
-                    <div className="timesheet-table">
-                        <h5 className="text-center">Displaying results for Cat Facts API</h5>
-                    
-                        <table className="table table-bordered">
-                            <thead className="thead-dark">
-                                <tr>
-                                    <th>Fact</th>
-                                    <th>-</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                   <td>{results2}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="timesheet-table" style={{ float: 'none' }} >
+                    <h5 className="text-center">Displaying results for Cat Facts API</h5>
+                
+                    <table className="table table-bordered">
+                        <thead className="thead-dark">
+                            <tr>
+                                <th>Fact</th>
+                                <th>-</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{results2}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </Container>
         )
     };
 }

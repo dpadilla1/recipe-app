@@ -2,6 +2,7 @@ import React from 'react'
 import '../stylesheets/Slide.css';
 import { useLocation } from "react-router-dom";
 
+
 const Slide = (props) => { 
             const location = useLocation();
             const mealInfo = location.state;

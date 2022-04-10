@@ -1,35 +1,22 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import SlideModal from './SlideModal'
 
 const MealCard = ({ 
   id, 
   mealCard,
 }) => (
-    <div>
-        <Card style={{ width: '15rem' }}>
+    <div className='floatCard' style={{ float: 'left' }}>
+        <Card style={{ width: '140px' }}>
             <Card.Img variant="top" src={mealCard.img} />
             <Card.Body>
-                <Card.Title>{mealCard.Name}</Card.Title>
-                <Card.Text>
-                    Description Text
-                </Card.Text>
-                <Link to={{
-                    pathname: "/slide",
-                    hash: "1111",
-                }} 
-                    state={mealCard}
-                >
-                    <Button 
-                        variant="primary"
-                    >
-                        Slide
-                    </Button>
-                </Link>
+                <Card.Title style={{fontSize:"14px"}}>
+                    {mealCard.Name}
+                </Card.Title>
+                <SlideModal mealInfo = {mealCard} />
             </Card.Body>
         </Card>
-  </div>
+    </div>
 )
 
 export default MealCard
