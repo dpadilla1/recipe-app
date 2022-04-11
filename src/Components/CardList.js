@@ -8,37 +8,33 @@ import SlideModal from './SlideModal'
 var CardList = ({ 
   data, 
   filter,
+  selectedTags
 }) => { 
-  var cards = "";
-  if (data != null){
+  var cards = "No results";
+  if (data != null) {
     var input = filter.toLowerCase();
-    var inputArr = input.split(', ');
-  
+
     // Gather list of cards
     cards = data
-      // filtering out the cards that...
       .filter((card, i) => {
         let tagArr = card.Tags.toLowerCase().split(', ');
+        let drop = true;
+        // filter by selected tags
+        if (selectedTags != null) {
+          selectedTags.forEach((selectedTag) => {
+            if (!tagArr.includes(selectedTag.value)) {
+              drop = false;
+              return;
+            }
+          })
+        }
+        if (!drop) return drop;
+        // filter by name
         if (input === ""){
           return true;
         }
-        if (inputArr.length === 1) {
-          let check = card.Name.toLowerCase().indexOf(input);
-          return (
-            // ...are not matching the current search value
-            check >= 0 || tagArr.includes(input)
-          )
-        }
-        else {
-          let tagArr = card.Tags.toLowerCase().split(', ');
-          tagArr.forEach(t => console.log(t))
-          for (let i = 0; i < inputArr.length; i++) {
-            if (!tagArr.includes(inputArr[i]) && card.Name.toLowerCase().indexOf(inputArr[i])) {
-              return false;
-            }
-          }
-          return true;
-        }
+        let check = card.Name.toLowerCase().indexOf(input);
+        return (check >= 0)
       })
       // ...output a <Card /> component for each Card
       .map((card, i) => {

@@ -106,8 +106,8 @@ class MainPage extends React.Component {
         return (
             <Container>
                 <br/>
-                <Row>
-                    <MultiSelect allTags={this.state.allTags} childToParent={this.childToParent}/>
+                <Row style={{ 'paddingBottom': '5px' }}>
+                    <MultiSelect allTags={this.state.allTags} childToParent={this.childToParent} />
                 </Row>
                 <Row>
                     <br/>
@@ -129,11 +129,12 @@ class MainPage extends React.Component {
                             </button>
                         }
                     </header>
-                    <br/><br/><br/>
+                    <br/><br/><br/><br/>
                     
                         <CardList 
                             data={this.state.results}
                             filter={this.state.filterText}
+                            selectedTags={this.state.selectedTags}
                         />
                     
                 </Row>
