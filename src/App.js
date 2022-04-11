@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Logo from "./Components/Logo";
 import MainPage from "./MainPage";
-import Slide from "./Components/Slide";
+
 
 function App() {
   return (
@@ -13,7 +13,6 @@ function App() {
 
 		<Routes>
 			<Route path ="/" element={<MainPage />} />
-			<Route path ="/slide" element={<Slide />} />
 			<Route path ="/test" element={<TestPage />} />
 			<Route path ="/reacthome" element={<Home />} />
 		</Routes>

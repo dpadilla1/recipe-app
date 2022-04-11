@@ -5,6 +5,7 @@ import { Container, Row } from 'react-bootstrap';
 import Search from "./Components/Search";
 import CardList from "./Components/CardList";
 import MultiSelect from "./Components/MultiSelect";
+import testdata from "./Data/testdata.json";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -12,30 +13,7 @@ class MainPage extends React.Component {
         this.state = {
             filterText: '',
             favorites: [],
-            results: [{
-                "ID" : "1",
-                "Name" : "Derek Pizza",
-                "Tags" : "fat, ugly, poor",
-                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.jqjib22kmuoo",
-                "SlidesLink" : "slide=id.g123c42ac328_0_45",
-                "img" : "https://popmenucloud.com/cdn-cgi/image/width=1920,height=1920,format=auto,fit=scale-down/wmzltkrx/71623eb0-5357-4fc4-8759-167961cf0dbf.jpg"
-            }, {
-                "ID" : "2",
-                "Name" : "Gavin Pizza",
-                "Tags" : "buff, sexy, rich",
-                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
-                "SlidesLink" : "slide=id.g123c42ac328_0_174",
-                "img" : "https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg"
-            }, {
-                "ID" : "3",
-                "Name" : "Tacos",
-                "Tags" : "buff, poor, sexy, fattening, mexican",
-                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
-                "SlidesLink" : "slide=id.g123c42ac328_17_0",
-                "img" : "https://realfood.tesco.com/media/images/RFO-1400x919-Espresso-black-bean-tacos-388234bc-98b6-4681-b43a-2eeed4c7056a-0-1400x919.jpg"
-            
-            }],
-            results2: null,
+            results: testdata.testdata,
             allTags: [],
             selectedTags: []
         }
@@ -47,18 +25,7 @@ class MainPage extends React.Component {
     }
 
     getResults() {
-        let url2 = 'https://catfact.ninja/fact';
-        axios.get(url2)
-            .then(response => {
-                this.setState({
-                    results2: response.data
-                }, () => {
-                    console.log("CAT: ", response.data.fact);
-                });
-            })
-            .catch(error => {
-                console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
-            })
+        console.log("Get Results Hit.");
         
         //let url3 = 'https://sheet.best/api/sheets/dce16b23-ba7f-4705-a5fe-1c922f431c17';
         /*axios.get(url3)
@@ -92,6 +59,7 @@ class MainPage extends React.Component {
         this.setState({
             allTags: allTagsTemp
         },() => {
+            console.log("Finished Processing Unique Tags Below: ")
             console.log(this.state.allTags)
         });
     }
@@ -131,25 +99,9 @@ class MainPage extends React.Component {
 
     render() {
         const hasSearch = this.state.filterText.length > 0;
-        //Table Entries
-        var results2 = null;
-        /*if(this.state.results != null) {
-            if(this.state.results.length > 0) {
-                results = this.state.results.map((r,i) => {
-                    return (
-                        <tr key={i}>
-                            <th scope="row">{i}</th>
-                            <td>{r.FACT}</td>
-                        </tr>
-                    )
-                })
-            }
-        }*/
         console.log("RENDERED MainPage");
-        if(this.state.results2 != null){
-            results2 = this.state.results2.fact
-        }
-        console.log(this.state.selectedTags)
+        console.log("Selected Tags Below: ");
+        console.log(this.state.selectedTags);
         
         return (
             <Container>
@@ -177,7 +129,7 @@ class MainPage extends React.Component {
                             </button>
                         }
                     </header>
-                    <br/><br/><br/><br/>
+                    <br/><br/><br/>
                     
                         <CardList 
                             data={this.state.results}
@@ -185,27 +137,6 @@ class MainPage extends React.Component {
                         />
                     
                 </Row>
-
-
-                <br/><br/><br/>
-
-                <div className="timesheet-table" style={{ float: 'none' }} >
-                    <h5 className="text-center">Displaying results for Cat Facts API</h5>
-                
-                    <table className="table table-bordered">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th>Fact</th>
-                                <th>-</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{results2}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </Container>
         )
     };

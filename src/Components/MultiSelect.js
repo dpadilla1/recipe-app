@@ -31,7 +31,7 @@ class MultiSelect extends Component {
       }
 
   render() {
-      console.log(this.props.allTags)
+    console.log("RENDERED Multi-Select")
     return (
         <div>
         <Select 
