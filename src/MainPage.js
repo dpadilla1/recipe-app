@@ -4,6 +4,7 @@ import { Container, Row } from 'react-bootstrap';
 
 import Search from "./Components/Search";
 import CardList from "./Components/CardList";
+import MultiSelect from "./Components/MultiSelect";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -25,13 +26,24 @@ class MainPage extends React.Component {
                 "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
                 "SlidesLink" : "slide=id.g123c42ac328_0_174",
                 "img" : "https://w0.peakpx.com/wallpaper/181/86/HD-wallpaper-double-patty-cheeseburger-thumbnail.jpg"
+            }, {
+                "ID" : "3",
+                "Name" : "Tacos",
+                "Tags" : "buff, poor, sexy, fattening, mexican",
+                "DocsLink" : "https://docs.google.com/document/d/14FUB4UkJ1DpqQlIbO0uHHWx4hiLDK777Zc9AhlgJ-u0/edit#bookmark=id.3v5azsnre1rr",
+                "SlidesLink" : "slide=id.g123c42ac328_17_0",
+                "img" : "https://realfood.tesco.com/media/images/RFO-1400x919-Espresso-black-bean-tacos-388234bc-98b6-4681-b43a-2eeed4c7056a-0-1400x919.jpg"
+            
             }],
-            results2: null
+            results2: null,
+            allTags: [],
+            selectedTags: []
         }
     }
 
     async componentDidMount() {
         this.getResults();
+        this.getTags();
     }
 
     getResults() {
@@ -42,17 +54,52 @@ class MainPage extends React.Component {
                     results2: response.data
                 }, () => {
                     console.log("CAT: ", response.data.fact);
-                })
+                });
             })
             .catch(error => {
                 console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
             })
+        
+        //let url3 = 'https://sheet.best/api/sheets/dce16b23-ba7f-4705-a5fe-1c922f431c17';
+        /*axios.get(url3)
+            .then(response => {
+                    this.setState({
+                        results: response.data
+                    }, () => {
+                        console.log("SHEETS: ", response.data);
+                    })
+                })
+                .catch(error => {
+                    console.log("AXIOS FAILED AXIOS FAILED AXIOS FAILED------------" + error);
+                })*/
+    }
+
+    getTags() {
+        let allTagsTemp = [];
+        let allTagsCheck = [];
+        this.state.results.forEach(meal => {
+            let tagArr = meal.Tags.toLowerCase().split(', ');
+            for (let i = 0; i < tagArr.length; i++) {
+                if (!allTagsCheck.includes(tagArr[i])) {
+                    allTagsTemp.push({
+                        "value": tagArr[i],
+                        "label": tagArr[i]
+                    });
+                    allTagsCheck.push(tagArr[i]);
+                }
+            }
+        });
+        this.setState({
+            allTags: allTagsTemp
+        },() => {
+            console.log(this.state.allTags)
+        });
     }
 
     // update filterText in state when user types 
     filterUpdate(value) {
         this.setState({
-        filterText: value
+            filterText: value
         });
     }
 
@@ -76,6 +123,12 @@ class MainPage extends React.Component {
         })
     }
 
+    childToParent = (childData) => {
+        this.setState({
+            selectedTags: childData
+        })
+    }
+
     render() {
         const hasSearch = this.state.filterText.length > 0;
         //Table Entries
@@ -92,14 +145,18 @@ class MainPage extends React.Component {
                 })
             }
         }*/
-        console.log("RESULTS: " + this.state.results2)
+        console.log("RENDERED MainPage");
         if(this.state.results2 != null){
             results2 = this.state.results2.fact
         }
+        console.log(this.state.selectedTags)
         
         return (
             <Container>
                 <br/>
+                <Row>
+                    <MultiSelect allTags={this.state.allTags} childToParent={this.childToParent}/>
+                </Row>
                 <Row>
                     <br/>
                     <header className='text-center'>
@@ -121,12 +178,12 @@ class MainPage extends React.Component {
                         }
                     </header>
                     <br/><br/><br/><br/>
-                    <main>
+                    
                         <CardList 
                             data={this.state.results}
                             filter={this.state.filterText}
                         />
-                    </main>
+                    
                 </Row>
 
 

@@ -15,7 +15,7 @@ class Search extends Component {
           style={{'width':'100%'}}
           type='text'
           ref='filterInput'
-          placeholder='Type to filter..'
+          placeholder='Search by Name...'
           // binding the input value to state
           value={filterVal}
           onChange={() => {

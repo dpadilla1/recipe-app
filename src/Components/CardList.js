@@ -23,9 +23,10 @@ var CardList = ({
           return true;
         }
         if (inputArr.length === 1) {
+          let check = card.Name.toLowerCase().indexOf(input);
           return (
             // ...are not matching the current search value
-            !card.Name.toLowerCase().indexOf(input) || tagArr.includes(input)
+            check >= 0 || tagArr.includes(input)
           )
         }
         else {

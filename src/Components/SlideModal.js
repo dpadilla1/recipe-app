@@ -5,11 +5,9 @@ import Card from 'react-bootstrap/Card';
 const SlideModal = (
   values
 ) => {
-  console.log(values);
   var mealInfo = values.mealCard;
   var src = "https://docs.google.com/presentation/d/e/2PACX-1vQeDd-DlowUw-OjN2YEpLpULv1xBvFlyDbP7BazKA0jHl8OartFdacITRsBYa9pEPbogDa3cRltt64X/embed?start=false&loop=false&delayms=3000&";
   src += mealInfo.SlidesLink;
-  console.log("src: "+ src);
 
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -22,7 +20,7 @@ const SlideModal = (
 
   return (
     <div className='floatCard' style={{ float: 'left' }}>
-      <Card style={{ width: '140px' }} >
+      <Card style={{ width: '145px' }} >
             <Card.Img variant="top" src={mealInfo.img} onClick={() => handleShow()}/>
             <Card.Body>
                 <Card.Title style={{fontSize:"14px"}}>
